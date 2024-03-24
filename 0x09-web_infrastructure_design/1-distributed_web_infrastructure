@@ -1,0 +1,44 @@
+https://imgur.com/7ON2oIR
+
+Three Server Web Infrastructure for www.foobar.com
+Components:
+Web Server (Nginx): Handles incoming HTTP requests, serves static content, and forwards dynamic requests to the application server.
+
+Application Server: Executes the application logic and generates dynamic content for client requests.
+
+Load Balancer (HAproxy): Distributes incoming traffic across multiple servers to ensure high availability and scalability.
+
+Database (MySQL): Stores and manages the website's data.
+
+Specifics:
+1. Additional Elements:
+
+Load Balancer (HAproxy): Added to distribute traffic among multiple servers, improving reliability and scalability.
+Database (MySQL): Required to store and manage website data.
+2. Load Balancer Configuration:
+
+Configured with Round-Robin distribution algorithm. It evenly distributes incoming requests among the available servers.
+3. Active-Active vs. Active-Passive:
+
+Active-Active setup: Both servers are actively serving traffic simultaneously. If one server fails, the other can still handle incoming requests.
+Active-Passive setup: One server serves traffic actively while the other remains idle (passive). If the active server fails, the passive one takes over.
+4. Database Primary-Replica Cluster:
+
+The primary node (master) handles write operations and synchronizes data changes to replica nodes (slaves).
+Replica nodes serve read-only queries and can take over if the primary node fails.
+5. Difference Between Primary and Replica Nodes:
+
+Primary Node: Handles write operations, ensuring data consistency and integrity. It's critical for the application's functionality.
+Replica Node: Serves read-only queries, improving read performance. It acts as a backup in case the primary node fails.
+Issues:
+1. Single Point of Failure (SPOF):
+
+The entire infrastructure lacks redundancy. Failure of any component can lead to service disruption.
+No redundancy in servers, load balancer, or database.
+2. Security Issues:
+
+No firewall protection exposes servers to potential attacks.
+Lack of HTTPS encryption leaves data vulnerable to interception.
+3. No Monitoring:
+
+Absence of monitoring tools makes it challenging to detect and respond to performance issues or security breaches promptly.
