@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+# Script that installs Nginx server, redirects /redirect_me and customizes 404 not found
+
+sudo apt-get -y update
+sudo apt-get -y install nginx
+sudo ufw allow 'Nginx HTTP'
+echo "Ceci n'est pas une page" | sudo tee /usr/share/nginx/html/404.html
+
+# Find the appropriate line number to insert the error_page directive
+line_number=$(grep -n "location / {" /etc/nginx/sites-available/default | cut -d: -f1)
+
+# Construct the sed command dynamically to insert the error_page directive
+newlines="\\
+    error_page 404 /404.html;\n\\
+    location = /404.html {\n\\
+        root /usr/share/nginx/html;\n\\
+        internal;\n\\
+    }\n\\
+"
+
+# Insert the error_page directive using sed
+sudo sed -i "${line_number}i$newlines" /etc/nginx/sites-available/default
+
+sudo service nginx restart
