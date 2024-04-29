@@ -1,2 +1,6 @@
 #!/bin/bash
+<<<<<<< HEAD
 chown betty hello
+=======
+chown betty hello 
+>>>>>>> origin/master

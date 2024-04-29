@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+<<<<<<< HEAD
 
 # a Bash script that pings an IP address passed as an argument. Requirements:
 
@@ -13,4 +14,13 @@ if [ "$#" -eq 0 ]; then
    echo 'Usage: 5-is_the_host_on_the_network {IP_ADDRESS}'
 else
 	ping -c 5 "$1"
+=======
+# Pings an IP address received as an argument 5 times.
+
+if [ $# -eq 0 ]
+then
+  echo "Usage: 5-is_the_host_on_the_network {IP_ADDRESS}"
+else
+  ping -c 5 "$1"
+>>>>>>> origin/master
 fi

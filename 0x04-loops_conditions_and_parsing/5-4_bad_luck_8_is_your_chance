@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+<<<<<<< HEAD
 # Bash script that loops from 1 to 10 and
 count=0
 
@@ -14,4 +15,21 @@ do
 		echo "Best School"
 	fi
 	(( count++ ))
+=======
+# displays Best School 10 times.
+
+COUNTER=1
+while [ $COUNTER -lt 11 ]
+do
+    if [ $COUNTER = 4 ]
+    then
+        echo "bad luck"
+    elif [ $COUNTER = 8 ]
+    then
+        echo "good luck"
+    else
+        echo "Best School"
+    fi
+    ((COUNTER++))
+>>>>>>> origin/master
 done

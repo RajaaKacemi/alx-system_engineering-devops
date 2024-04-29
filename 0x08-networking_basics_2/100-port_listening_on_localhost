@@ -1,4 +1,9 @@
 #!/usr/bin/env bash
+<<<<<<< HEAD
 # listens on port 98 on localhost
 
 nc -l 98
+=======
+# Port listening on localhost
+nc -lk localhost 98
+>>>>>>> origin/master

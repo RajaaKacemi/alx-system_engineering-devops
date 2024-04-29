@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+<<<<<<< HEAD
 # Displays "Holberton School" 10 times using a while
 
 count=0
@@ -7,4 +8,13 @@ while [ $count -lt 10 ]
 do
   echo "Best School"
   (( count++ ))
+=======
+# displays Best School 10 times.
+
+COUNTER=0
+while [ $COUNTER -lt 10 ]
+do
+    echo "Best School"
+    ((COUNTER++))
+>>>>>>> origin/master
 done

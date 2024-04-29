@@ -1,2 +1,6 @@
 #!/bin/bash
+<<<<<<< HEAD
 chown vincent:staff * 
+=======
+chown vincent:staff *
+>>>>>>> origin/master

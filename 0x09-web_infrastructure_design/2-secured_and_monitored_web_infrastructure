@@ -1,0 +1,48 @@
+https://imgur.com/GxvZLIA
+
+
+Secured and Monitored Three Server Web Infrastructure for www.foobar.com
+Components:
+Firewalls (3): Implemented to control incoming and outgoing network traffic, enhancing security by filtering malicious or unauthorized access.
+
+SSL Certificate: Installed on the web server to enable HTTPS encryption, ensuring secure communication between clients and the server.
+
+Monitoring Clients (3): Installed on each server to collect performance metrics, logs, and other data for analysis and troubleshooting.
+
+Specifics:
+1. Additional Elements:
+
+Firewalls: Added for network security, restricting access to authorized traffic and protecting against unauthorized access or attacks.
+SSL Certificate: Implemented to encrypt traffic between clients and the server, safeguarding sensitive information from interception.
+Monitoring Clients: Deployed to monitor server performance, detect anomalies, and ensure smooth operation of the infrastructure.
+2. Purpose of Firewalls:
+
+Firewalls control and monitor incoming and outgoing traffic, blocking unauthorized access and defending against various network-based attacks, such as DDoS, malware, and intrusion attempts.
+3. Traffic Served over HTTPS:
+
+HTTPS encrypts data transmitted between the client and server, ensuring confidentiality and integrity of information, particularly sensitive data like login credentials, personal information, etc.
+4. Purpose of Monitoring:
+
+Monitoring provides insights into server performance, resource utilization, application health, and security events.
+It helps in detecting and diagnosing issues promptly, optimizing resource allocation, and ensuring high availability and reliability.
+5. Data Collection in Monitoring Tool:
+
+Monitoring clients collect various metrics such as CPU usage, memory utilization, disk I/O, network traffic, application logs, error logs, etc.
+These metrics are sent to the monitoring tool (e.g., Sumo Logic) for analysis, visualization, and alerting.
+6. Monitoring Web Server QPS:
+
+To monitor web server QPS (Queries Per Second), monitoring clients can track the number of HTTP requests received by the web server over a specific time period.
+Analyzing this metric helps in understanding server load, identifying potential bottlenecks, and optimizing server performance.
+Issues:
+1. Terminating SSL at Load Balancer Level:
+
+Terminating SSL at the load balancer exposes decrypted traffic within the internal network, potentially compromising data confidentiality.
+It's advisable to maintain end-to-end encryption by terminating SSL at the web server level.
+2. Single MySQL Server for Writes:
+
+Having only one MySQL server capable of accepting writes introduces a single point of failure. If the server fails, write operations will be disrupted.
+Implementing MySQL replication with a primary and replica node can improve fault tolerance and availability.
+3. Uniform Server Components:
+
+Using identical components across servers may lead to uniform vulnerabilities and dependencies. A single vulnerability could potentially affect all servers simultaneously.
+Diversifying components or implementing redundancy can mitigate this risk and enhance overall resilience.

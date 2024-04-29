@@ -1,2 +1,6 @@
 #!/bin/bash
+<<<<<<< HEAD
 sort | uniq -u
+=======
+sort uniq -u
+>>>>>>> origin/master

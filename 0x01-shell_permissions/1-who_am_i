@@ -1,2 +1,6 @@
 #!/bin/bash
+<<<<<<< HEAD
 whoami
+=======
+id -un
+>>>>>>> origin/master

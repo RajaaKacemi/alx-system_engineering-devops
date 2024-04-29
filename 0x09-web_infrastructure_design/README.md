@@ -1,3 +1,4 @@
+<<<<<<< HEAD
                     # Project: Web Infrastructure Design
 
 
@@ -28,3 +29,15 @@ You must be able to draw a diagram covering the web stack you built with the sys
 You must be able to explain what each component is doing
 You must be able to explain system redundancy
 Know all the mentioned acronyms: LAMP, SPOF, QPS
+=======
+Web infrastructure design
+
+A lot of websites are powered by simple web infrastructure, a lot of time it is composed of a single server with a LAMP stack.
+
+This is a design of a one server web infrastructure that hosts a website that is reachable via www.foobar.com. This explanation begins by having a user wanting to access the website.
+
+AUTHORS:
+
+* Rajaa kacemi
+* Saidi Siraj
+>>>>>>> origin/master

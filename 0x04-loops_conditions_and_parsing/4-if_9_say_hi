@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+<<<<<<< HEAD
 
 # displays Best School 10 times, but for the 9th iteration
 
@@ -14,4 +15,18 @@ do
  fi
  echo "Best School"
  (( count++ ))
+=======
+# displays Best School 10 times.
+
+COUNTER=0
+while [ $COUNTER -lt 11 ]
+do
+    if [ $COUNTER = 9 ]
+    then
+        echo "Hi"
+    else
+        echo "Best School"
+    fi
+    ((COUNTER++))
+>>>>>>> origin/master
 done

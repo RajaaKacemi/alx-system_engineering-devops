@@ -1,2 +1,6 @@
 #!/bin/bash
+<<<<<<< HEAD
 ls . .. /boot -la
+=======
+ls -al . .. /boot
+>>>>>>> origin/master

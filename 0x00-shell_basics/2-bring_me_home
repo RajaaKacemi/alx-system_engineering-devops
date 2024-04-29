@@ -1,2 +1,6 @@
 #!/bin/bash
+<<<<<<< HEAD
 cd 
+=======
+cd ~
+>>>>>>> origin/master

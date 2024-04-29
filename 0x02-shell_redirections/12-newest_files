@@ -1,2 +1,6 @@
 #!/bin/bash
+<<<<<<< HEAD
 ls -t1 | head -n 10
+=======
+ls -t1 | head -n 10 
+>>>>>>> origin/master

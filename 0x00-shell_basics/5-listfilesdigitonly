@@ -1,2 +1,6 @@
 #!/bin/bash
+<<<<<<< HEAD
 ls -na
+=======
+ls -lna
+>>>>>>> origin/master

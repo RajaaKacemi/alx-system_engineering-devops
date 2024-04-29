@@ -1,2 +1,6 @@
 #!/bin/bash
+<<<<<<< HEAD
 ls -xamp
+=======
+ls -amvp
+>>>>>>> origin/master

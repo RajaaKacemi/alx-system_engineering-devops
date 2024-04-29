@@ -1,0 +1,25 @@
+https://imgur.com/erK5XGr
+
+Explanation of Specifics:
+
+What is a Server: A server is a computer or software system that provides services, data, or resources to other computers or devices over a network, such as the internet. In this context, it hosts the web application.
+
+Role of the Domain Name: The domain name (www.foobar.com) provides a human-friendly way to access the website, acting as a pointer to the server's IP address.
+
+Type of DNS Record "www" is in www.foobar.com: The "www" in www.foobar.com is a subdomain. It's typically configured as a CNAME (Canonical Name) or A (Address) record in the DNS, pointing to the server's IP address.
+
+Role of the Web Server: Nginx serves as the entry point for incoming HTTP requests. It handles SSL/TLS encryption, manages routing, and can load balance traffic if necessary.
+
+Role of the Application Server: The application server executes dynamic code, interacts with the database, and generates dynamic content for users.
+
+Role of the Database: The database stores, retrieves, and manages the web application's data. It is essential for dynamic web applications that rely on user-specific information.
+
+Server Communication with User's Computer: The server communicates with the user's computer over the internet using the HTTP/HTTPS protocol. When a user requests www.foobar.com, the server sends the web page content and other resources as HTTP responses
+
+Issues with the Infrastructure:
+
+Single Point of Failure (SPOF): This infrastructure has a single server. If it fails, the entire website becomes unavailable. To address this, you can introduce redundancy by adding backup servers and load balancing.
+
+Downtime during Maintenance: When performing maintenance or deploying new code, the web server often needs to be restarted. This can result in temporary downtime for the website. To mitigate this, a load balancer and multiple application server instances can be used to ensure continuous service.
+
+Limited Scalability: With only one server, the infrastructure cannot handle a significant increase in incoming traffic. Horizontal scaling, adding more servers and load balancing, is required to handle increased traffic efficiently.

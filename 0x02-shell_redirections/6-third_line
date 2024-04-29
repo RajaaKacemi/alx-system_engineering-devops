@@ -1,2 +1,6 @@
 #!/bin/bash
+<<<<<<< HEAD
 head -n 3 iacta | tail -n 1
+=======
+head -n 3 iacta |tail -n 1
+>>>>>>> origin/master

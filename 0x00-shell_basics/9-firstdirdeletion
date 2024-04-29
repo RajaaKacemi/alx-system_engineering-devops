@@ -1,2 +1,6 @@
 #!/bin/bash
+<<<<<<< HEAD
 rmdir /tmp/my_first_directory
+=======
+rm -r /tmp/my_first_directory
+>>>>>>> origin/master

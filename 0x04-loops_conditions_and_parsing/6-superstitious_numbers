@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+<<<<<<< HEAD
 
 # displays numbers from 1 to 20 
 
@@ -19,4 +20,34 @@ do
   "17") echo "bad luck from Italy";;
  esac
  (( count++ ))
+=======
+# displays numbers from 1 to 20.
+
+COUNTER=1
+while [ $COUNTER -lt 21 ]
+do
+    case $COUNTER in
+
+        4)
+	    echo $COUNTER
+	    echo "bad luck from China"
+	    ;;
+	
+	9)
+	    echo $COUNTER
+	    echo "bad luck from Japan"
+	    ;;
+	
+	17)
+	    echo $COUNTER
+	    echo "bad luck from Italy"
+	    ;;
+
+	*)
+	    echo $COUNTER
+	    ;;
+    esac
+
+    ((COUNTER++))
+>>>>>>> origin/master
 done

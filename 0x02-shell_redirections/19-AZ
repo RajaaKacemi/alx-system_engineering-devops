@@ -1,2 +1,6 @@
 #!/bin/bash
+<<<<<<< HEAD
 tr "A" "Z" | tr "c" "e"
+=======
+tr "A" "Z" |tr "c" "e"
+>>>>>>> origin/master
