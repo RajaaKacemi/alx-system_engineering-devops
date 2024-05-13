@@ -1,0 +1,36 @@
+What happens when you type google.com in your browser and press Enter ?
+
+Have you ever wondered what exactly happens when you type https://www.google.com into your browser and press Enter?
+A complex process involving multiple players and technologies unfolds. In this post, we will focus on the fascinating journey of an URL, using https://www.google.com as our example. We’ll delve into the journey of a simple HTTPS request and explore the roles of DNS, TCP/IP, Firewalls, HTTPS/SSL, Load Balancers, Web Servers, Application Servers, and Databases.
+
+Step 1: DNS Request
+The process begins with a DNS request. Your browser doesn’t understand domain names like “google.com”, so it sends a request to the Domain Name System (DNS) server to get the IP address for “google.com”. The DNS server responds with the IP address.
+
+Step 2: TCP/IP
+Using the IP address, your browser establishes a connection with the server. This connection is established using the Transmission Control Protocol (TCP).
+
+Step 3: Firewall
+If your computer is protected by a firewall, it acts as a gatekeeper, carefully examining your requests before granting access. Similarly, if the server you’re trying to connect to has its own firewall, it checks the incoming requests, filtering network traffic based on predefined security rules.
+
+Step 4: HTTPS/SSL
+Once a connection is established, the client issues an HTTPS request to the server to fetch data. This is secured using HTTPS and SSL (or its successor, TLS). HTTPS is an extension of HTTP, securing it with the Secure Socket Layer (SSL). SSL/TLS encrypts the data exchanged between your browser and the server, ensuring a secure connection.
+
+setup 5 : Load balancer
+The request then reaches a load balancer, which handle the high traffic and multiple servers ensure efficient use of resources and minimize downtime web server.
+
+setup 6 : web server
+then the request reaches a web server, which hosts the website’s content and process it (A web server like Apache or Nginx handles the request, retrieves the requested resources, and constructs the HTTP response.) and then sends the data ( html and css files).
+
+Step 7: Application Server
+In a complex web application, the web server might delegate certain tasks to an application server. This server executes application logic, interacts with databases, and generates dynamic content based on the client’s request.
+
+Step 8: Database
+If the requested resources involve data retrieval or manipulation, the application server communicates with a database server to fetch or update the required information.
+
+Step 9: Browser Rendering
+Your browser receives the response and renders the webpage, displaying the familiar Google search page.
+
+Conclusion:
+
+In this post, we’ve explored the journey of a URL from DNS requests to browser rendering. We’ve observed how various technologies and servers collaborate to provide the requested content.
+
