@@ -1,13 +1,4 @@
-#!/usr/bin/env bash
-# This script checks if Nginx is running on port 80.
-
-# Attempt to fetch a webpage from port 80 on the localhost using curl
-curl 0:80 &> /dev/null
-
-# Check the exit status of the previous command
-if [ $? -ne 0 ]; then
-    echo "Nginx is not running"
-else
-    echo "Nginx is running"
-fi
-
+cript that sets the port 80
+sed -i "s/8080/80/g" /etc/nginx/sites-enabled/default
+service nginx restart
+kill -9 "$(cat /run/nginx.pid)"
