@@ -1,0 +1,37 @@
+#!/bin/bash
+
+# Check if Nginx is installed
+if ! command -v nginx &> /dev/null; then
+    echo "Nginx is not installed."
+    exit 1
+fi
+
+# Check if Nginx is already listening on port 80
+if ss -tln | grep -q ':80'; then
+    echo "Nginx is already listening on port 80."
+    exit 0
+fi
+
+# Check if Nginx configuration is set to listen on port 80
+if ! grep -q 'listen 80' /etc/nginx/nginx.conf; then
+    echo "Configuring Nginx to listen on port 80..."
+    sed -i 's/listen\s*80;/listen 80 default_server;/g' /etc/nginx/nginx.conf
+    systemctl restart nginx
+    sleep 1
+    if ! ss -tln | grep -q ':80'; then
+        echo "Failed to configure Nginx to listen on port 80."
+        exit 1
+    fi
+    echo "Nginx is now listening on port 80."
+    exit 0
+fi
+
+# Check if another process is already listening on port 80
+if ss -tln | grep -q ':80'; then
+    echo "Another process is already listening on port 80."
+    exit 1
+fi
+
+echo "Unknown issue encountered. Please check Nginx logs and firewall rules."
+exit 1
+

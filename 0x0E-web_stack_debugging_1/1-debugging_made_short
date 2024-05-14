@@ -1,0 +1,8 @@
+#!/bin/bash
+curl 0:80 &> /dev/null
+if [ $? -ne 0 ]; then
+    echo "Nginx is not running"
+else
+    echo "Nginx is running"
+fi
+
