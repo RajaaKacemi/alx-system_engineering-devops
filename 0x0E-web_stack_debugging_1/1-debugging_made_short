@@ -1,5 +1,10 @@
-#!/bin/bash
+#!/usr/bin/env bash
+# This script checks if Nginx is running on port 80.
+
+# Attempt to fetch a webpage from port 80 on the localhost using curl
 curl 0:80 &> /dev/null
+
+# Check the exit status of the previous command
 if [ $? -ne 0 ]; then
     echo "Nginx is not running"
 else
