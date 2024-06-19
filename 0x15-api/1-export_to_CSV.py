@@ -1,16 +1,17 @@
 #!/usr/bin/python3
 """
-This module fetches and displays the TODO list progress for a given employee ID
-using a REST API.
+This module fetches and exports the TODO list progress for a given employee ID
+to a CSV file using a REST API.
 """
 
+import csv
 import requests
 import sys
 
 
 def fetch_employee_todo_progress(employee_id):
     """
-    Fetch and display the TODO list progress for the given employee ID.
+    Fetch and export the TODO list progress for the given employee ID.
 
     Args:
         employee_id (int): The ID of the employee.
@@ -28,12 +29,10 @@ def fetch_employee_todo_progress(employee_id):
             print(f"Employee with ID {employee_id} not found.")
             return
 
-        employee_name = user_data.get('name')
+        employee_name = user_data.get('username')
 
         # Fetch employee's TODO list
-        todos_url = (
-            f'https://jsonplaceholder.typicode.com/todos?userId={employee_id}'
-        )
+        todos_url = f'https://jsonplaceholder.typicode.com/todos?userId={employee_id}'
         todos_response = requests.get(todos_url)
         todos_data = todos_response.json()
 
@@ -41,15 +40,21 @@ def fetch_employee_todo_progress(employee_id):
             print(f"Failed to fetch TODO list for employee with ID {employee_id}.")
             return
 
-        total_tasks = len(todos_data)
-        done_tasks = [task for task in todos_data if task.get('completed')]
-        number_of_done_tasks = len(done_tasks)
+        # Prepare CSV file name
+        csv_file_name = f"{employee_id}.csv"
 
-        print(f"Employee {employee_name} is done with tasks("
-              f"{number_of_done_tasks}/{total_tasks}):")
+        # Write to CSV file
+        with open(csv_file_name, mode='w', newline='') as csv_file:
+            writer = csv.writer(csv_file, quoting=csv.QUOTE_ALL)
+            for task in todos_data:
+                writer.writerow([
+                    employee_id,
+                    employee_name,
+                    task.get('completed'),
+                    task.get('title')
+                ])
 
-        for task in done_tasks:
-            print(f"\t {task.get('title')}")
+        print(f"Data for employee ID {employee_id} has been exported to {csv_file_name}")
 
     except requests.RequestException as e:
         print(f"Error fetching data: {e}")
@@ -59,7 +64,7 @@ def fetch_employee_todo_progress(employee_id):
 
 if __name__ == "__main__":
     if len(sys.argv) != 2:
-        print("Usage: python3 0-gather_data_from_an_API.py <employee_id>")
+        print("Usage: python3 1-export_to_CSV.py <employee_id>")
         sys.exit(1)
 
     try:
@@ -69,3 +74,4 @@ if __name__ == "__main__":
         sys.exit(1)
 
     fetch_employee_todo_progress(employee_id)
+

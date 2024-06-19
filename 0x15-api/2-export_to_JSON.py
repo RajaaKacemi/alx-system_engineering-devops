@@ -1,16 +1,17 @@
 #!/usr/bin/python3
 """
-This module fetches and displays the TODO list progress for a given employee ID
-using a REST API.
+This module fetches and exports the TODO list progress for a given employee ID
+to a JSON file using a REST API.
 """
 
+import json
 import requests
 import sys
 
 
 def fetch_employee_todo_progress(employee_id):
     """
-    Fetch and display the TODO list progress for the given employee ID.
+    Fetch and export the TODO list progress for the given employee ID.
 
     Args:
         employee_id (int): The ID of the employee.
@@ -28,7 +29,7 @@ def fetch_employee_todo_progress(employee_id):
             print(f"Employee with ID {employee_id} not found.")
             return
 
-        employee_name = user_data.get('name')
+        employee_name = user_data.get('username')
 
         # Fetch employee's TODO list
         todos_url = (
@@ -41,15 +42,23 @@ def fetch_employee_todo_progress(employee_id):
             print(f"Failed to fetch TODO list for employee with ID {employee_id}.")
             return
 
-        total_tasks = len(todos_data)
-        done_tasks = [task for task in todos_data if task.get('completed')]
-        number_of_done_tasks = len(done_tasks)
+        # Prepare the data for JSON file
+        tasks = []
+        for task in todos_data:
+            tasks.append({
+                "task": task.get('title'),
+                "completed": task.get('completed'),
+                "username": employee_name
+            })
 
-        print(f"Employee {employee_name} is done with tasks("
-              f"{number_of_done_tasks}/{total_tasks}):")
+        employee_tasks = {str(employee_id): tasks}
 
-        for task in done_tasks:
-            print(f"\t {task.get('title')}")
+        # Write to JSON file
+        json_file_name = f"{employee_id}.json"
+        with open(json_file_name, mode='w') as json_file:
+            json.dump(employee_tasks, json_file)
+
+        print(f"Data for employee ID {employee_id} has been exported to {json_file_name}")
 
     except requests.RequestException as e:
         print(f"Error fetching data: {e}")
@@ -59,7 +68,7 @@ def fetch_employee_todo_progress(employee_id):
 
 if __name__ == "__main__":
     if len(sys.argv) != 2:
-        print("Usage: python3 0-gather_data_from_an_API.py <employee_id>")
+        print("Usage: python3 1-export_to_JSON.py <employee_id>")
         sys.exit(1)
 
     try:
