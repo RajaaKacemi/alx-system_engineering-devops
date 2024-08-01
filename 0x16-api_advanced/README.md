@@ -1,6 +1,3 @@
-api_advanced
-
-
 # Reddit API Subscriber Count
 
 This project contains a Python function to query the Reddit API and return the number of subscribers for a given subreddit. The function handles invalid subreddits by returning 0.
@@ -21,3 +18,4 @@ This project contains a Python function to query the Reddit API and return the n
 Make sure the `requests` module is installed:
 ```sh
 pip install requests
+
